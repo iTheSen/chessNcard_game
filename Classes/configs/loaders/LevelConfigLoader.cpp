@@ -64,6 +64,7 @@ bool LevelConfigLoader::loadLevelConfig(
         return false;
     }
 
+    // cocos的第三方库也就是常用的json库，在这里从json根开始解析
     rapidjson::Document document;
     document.Parse(content.c_str());
     if (document.HasParseError() || !document.IsObject()) {

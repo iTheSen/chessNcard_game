@@ -12,6 +12,8 @@
 
 namespace qipai {
 
+
+// 初始化当前总视图_gameView利用Resources下的 关卡json数据。
 bool GameController::init(GameView* gameView, const std::string& levelConfigPath)
 {
     if (gameView == nullptr) {
@@ -27,7 +29,9 @@ bool GameController::init(GameView* gameView, const std::string& levelConfigPath
     });
 
     _levelConfigPaths.clear();
+    //FileUtil的工作目录为 _searchPathArray 下的目录 初始化init会自动push_back _defaultResRootPath
     cocos2d::FileUtils* fileUtils = cocos2d::FileUtils::getInstance();
+    // 使用cocos提供的API遍历关卡json串
     for (int i = 1; i <= 99; ++i) {
         const std::string candidate = cocos2d::StringUtils::format("configs/levels/level_%d.json", i);
         if (!fileUtils->isFileExist(candidate)) {

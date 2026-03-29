@@ -32,6 +32,14 @@ project(${APP_NAME})
 set(COCOS2DX_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d)
 set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
 
+if(NOT EXISTS "${COCOS2DX_ROOT_PATH}/cmake/Modules/CocosBuildSet.cmake")
+    message(FATAL_ERROR "cocos2d-x not found. Run: git submodule update --init cocos2d")
+endif()
+
+if(NOT EXISTS "${COCOS2DX_ROOT_PATH}/external/CMakeLists.txt")
+    message(FATAL_ERROR "cocos2d-x external dependencies are missing. Run: python3 scripts/setup_cocos2d_deps.py")
+endif()
+
 include(CocosBuildSet)
 add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
 

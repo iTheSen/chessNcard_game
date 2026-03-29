@@ -29,12 +29,14 @@ GameModel GameModelFromLevelGenerator::generateGameModel(const LevelConfig& leve
     GameModel gameModel;
     int nextCardId = 1;
 
+    // 桌面牌区
     const std::vector<LevelCardConfig>& playFieldCards = levelConfig.getPlayFieldCards();
     for (const LevelCardConfig& cardConfig : playFieldCards) {
         gameModel.addPlayFieldCard(buildCardModel(nextCardId, cardConfig, CZT_PLAYFIELD));
         ++nextCardId;
     }
 
+    // 手牌区-stack嘛可以回退
     const std::vector<LevelCardConfig>& stackCards = levelConfig.getStackCards();
     for (size_t i = 0; i < stackCards.size(); ++i) {
         CardZoneType zone = CZT_STACK;

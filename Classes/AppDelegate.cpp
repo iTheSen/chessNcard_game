@@ -42,6 +42,8 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
+
+// 分辨率
 static cocos2d::Size designResolutionSize = cocos2d::Size(1080, 2080);
 
 AppDelegate::AppDelegate()
@@ -80,8 +82,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("Test", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height), 0.5f);
+//  static cocos2d::Size designResolutionSize = cocos2d::Size(1080, 2080);
+        glview = GLViewImpl::createWithRect(
+            "Test", 
+            cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height),
+            0.5f);
 #else
+//  这个是 Android的创建方式
         glview = GLViewImpl::create("QipaiGame");
 #endif
         director->setOpenGLView(glview);
