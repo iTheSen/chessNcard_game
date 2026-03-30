@@ -23,6 +23,7 @@ CardView* CardView::create(const CardModel& cardModel)
     return cardView;
 }
 
+// 把牌的样子构建出来
 bool CardView::initWithCard(const CardModel& cardModel)
 {
     if (!Node::init()) {
@@ -32,6 +33,8 @@ bool CardView::initWithCard(const CardModel& cardModel)
     _cardId = cardModel.getCardId();
     setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
 
+    // 设置背景图片 ${resource}/res/cards/card_general.png
+    // 还涉及到渲染render方式
     cocos2d::Sprite* background = cocos2d::Sprite::create(CardResConfig::getCardBackgroundPath());
     if (background == nullptr) {
         return false;
@@ -40,12 +43,14 @@ bool CardView::initWithCard(const CardModel& cardModel)
     const cocos2d::Size cardSize = CardResConfig::getCardSize();
     setContentSize(cardSize);
 
+    // 卡牌的背景阴影部分代码。
     cocos2d::DrawNode* shadow = cocos2d::DrawNode::create();
     shadow->drawSolidRect(
         cocos2d::Vec2(4.0f, -5.0f),
         cocos2d::Vec2(cardSize.width + 5.0f, cardSize.height - 3.0f),
         cocos2d::Color4F(0.0f, 0.0f, 0.0f, 0.12f));
     addChild(shadow, 0);
+    //
 
     background->setAnchorPoint(cocos2d::Vec2(0.0f, 0.0f));
     background->setPosition(cocos2d::Vec2::ZERO);

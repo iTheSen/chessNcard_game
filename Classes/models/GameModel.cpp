@@ -88,6 +88,7 @@ void GameModel::setNextStackIndex(int index)
     _nextStackIndex = index;
 }
 
+// 目前没有调用栈
 rapidjson::Value GameModel::toJson(rapidjson::Document::AllocatorType& allocator) const
 {
     rapidjson::Value root(rapidjson::kObjectType);

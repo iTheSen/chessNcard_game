@@ -4,6 +4,8 @@
 
 namespace qipai {
 
+
+    // 开发文档要求 注意函数小于50行
 void CardSpriteComposerService::composeFace(cocos2d::Node* cardRoot, CardFaceType face, CardSuitType suit)
 {
     if (cardRoot == nullptr) {
