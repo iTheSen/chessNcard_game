@@ -21,7 +21,9 @@ bool GameController::init(GameView* gameView, const std::string& levelConfigPath
     }
 
     _gameView = gameView;
+    // MVC 模型视图控制器 设置回调
     _gameView->setOnCardClickCallback([this](int cardId) {
+        //通过this传递的GameController 调用handlerCardClick
         handleCardClick(cardId);
     });
     _gameView->setOnUndoClickCallback([this]() {
@@ -32,6 +34,7 @@ bool GameController::init(GameView* gameView, const std::string& levelConfigPath
     //FileUtil的工作目录为 _searchPathArray 下的目录 初始化init会自动push_back _defaultResRootPath
     cocos2d::FileUtils* fileUtils = cocos2d::FileUtils::getInstance();
     // 使用cocos提供的API遍历关卡json串
+    // 目前最多99关
     for (int i = 1; i <= 99; ++i) {
         const std::string candidate = cocos2d::StringUtils::format("configs/levels/level_%d.json", i);
         if (!fileUtils->isFileExist(candidate)) {
@@ -52,6 +55,7 @@ bool GameController::init(GameView* gameView, const std::string& levelConfigPath
         }
     }
 
+    // 这里会调BuildCards
     return loadLevelByIndex(_currentLevelIndex);
 }
 

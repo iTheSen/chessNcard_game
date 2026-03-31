@@ -102,11 +102,12 @@ void GameView::buildCards(const GameModel& gameModel)
             continue;
         }
 
+        // 创建cardView并自动设置自动释放
         CardView* cardView = CardView::create(*cardModel);
         if (cardView == nullptr) {
             continue;
         }
-
+        
         cardView->setOnClickCallback([this](int clickedCardId) {
             if (_onCardClickCallback != nullptr) {
                 _onCardClickCallback(clickedCardId);

@@ -76,9 +76,12 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
+// app 执行启动之后要初始化glview，glview 创建矩形窗口，跑qipai_scene
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
+    // 因为 Director 是单例，是静态的全局对象 可能Director在调用本函数
+    // 前已经有了上下文，所以要判断一下 glview 是否需要新建 glview 用于Director的绑定
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
@@ -88,27 +91,33 @@ bool AppDelegate::applicationDidFinishLaunching() {
             cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height),
             0.5f);
 #else
-//  这个是 Android的创建方式
+//  这个是 Android创建glview的方式
         glview = GLViewImpl::create("QipaiGame");
 #endif
         director->setOpenGLView(glview);
     }
 
     // turn off FPS overlay for cleaner UI presentation.
+    // 关闭帧率显示
     director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
 
     // Set the design resolution
+    // 优先固定宽度
     glview->setDesignResolutionSize(
         designResolutionSize.width,
         designResolutionSize.height,
         ResolutionPolicy::FIXED_WIDTH);
 
+    // 包管理的一个钩子函数。
     register_all_packages();
 
     // create a scene. it's an autorelease object
+    // Scene -> Node -> Ref 可以被挂到自动释放池里面
+    // 开始写自己的项目代码，引擎和项目的运行逻辑实现分离。
+    // 引擎开始接管当前场景树 GameScene
     auto scene = qipai::GameScene::createScene();
 
     // run

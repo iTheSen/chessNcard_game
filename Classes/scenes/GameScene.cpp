@@ -13,6 +13,7 @@ cocos2d::Scene* GameScene::createScene()
 
 bool GameScene::init()
 {
+    // Scene::init负责拼接View和初始化
     if (!Scene::init()) {
         return false;
     }

@@ -7,6 +7,8 @@
 
 namespace qipai {
 
+
+// 
 CardView* CardView::create(const CardModel& cardModel)
 {
     CardView* cardView = new (std::nothrow) CardView();
@@ -19,6 +21,8 @@ CardView* CardView::create(const CardModel& cardModel)
         return nullptr;
     }
 
+    // 调父类Ref的autorelease把cardView放到释放池里
+    // 继承链 CardView->Node->Ref
     cardView->autorelease();
     return cardView;
 }

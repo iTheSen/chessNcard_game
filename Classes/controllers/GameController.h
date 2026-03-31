@@ -35,7 +35,7 @@ private:
     void handleCardClick(int cardId);
 
     /**
-     * @brief 路由并执行卡牌点击业务逻辑。
+     * @brief 决议卡牌点击——路由并执行卡牌点击业务逻辑。
      */
     bool resolveCardClick(int cardId, UndoModel& outUndo, std::string& outError);
 
