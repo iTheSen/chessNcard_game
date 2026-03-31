@@ -43,7 +43,7 @@ using namespace CocosDenshion;
 USING_NS_CC;
 
 
-// 分辨率
+// 窗口大小，分辨率
 static cocos2d::Size designResolutionSize = cocos2d::Size(1080, 2080);
 
 AppDelegate::AppDelegate()
