@@ -18,7 +18,8 @@ enum UndoActionType {
 
 /**
  * @brief 单步回退记录模型。
- *
+ * @see UndoManager.h
+ * 
  * 用于描述一次卡牌移动在回退时所需恢复的数据。
  */
 class UndoModel {
@@ -70,7 +71,10 @@ public:
     static UndoModel fromJson(const rapidjson::Value& value);
 
 private:
-    /** @brief 回退动作类型。 */
+    /** 
+     * @brief 回退动作类型。 
+     * @note 两种动作：1.从手牌区移到主牌区 2.从手牌区移到备用牌区
+     */
     UndoActionType _actionType = UAT_NONE;
 
     /** @brief 被移动卡牌 ID。 */

@@ -9,6 +9,7 @@ namespace qipai {
 
 /**
  * @brief 运行时卡牌数据模型。
+ * @note 可见这是一张卡牌的信息
  */
 class CardModel {
 public:
@@ -22,9 +23,9 @@ public:
      */
     CardModel(
         int cardId,
-        CardFaceType face,
-        CardSuitType suit,
-        CardZoneType zone,
+        CardFaceType face,//点数
+        CardSuitType suit,//花色
+        CardZoneType zone,//所属牌区
         const cocos2d::Vec2& position);
 
     /** @brief 获取卡牌 ID。 */

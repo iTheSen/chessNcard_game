@@ -9,8 +9,8 @@ namespace qipai {
 
 /**
  * @brief 回退管理器。
- *
- * 维护回退栈，提供压栈、出栈与清空能力。
+ * 
+ * 维护回退栈，提供压栈、出栈与清空能力。容器使用 vector,存储 UndoModel
  */
 class UndoManager {
 public:

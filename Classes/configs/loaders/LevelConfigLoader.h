@@ -9,7 +9,7 @@ namespace qipai {
 /**
  * @brief 关卡配置加载器。
  *
- * 从 JSON 文件加载关卡配置并解析为 LevelConfig。
+ * 从 JSON 文件加载关卡配置并解析为 LevelConfig 对象。
  */
 class LevelConfigLoader {
 public:

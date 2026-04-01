@@ -4,6 +4,7 @@ namespace qipai {
 
 namespace {
 
+    //±³¾°Í¼Æ¬
 const std::string kCardBackgroundPath = "res/cards/card_general.png";
 
 } // namespace

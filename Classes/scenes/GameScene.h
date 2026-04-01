@@ -31,7 +31,15 @@ private:
     /** @brief 游戏总视图。 */
     qipai::GameView* _gameView = nullptr;
 
-    /** @brief 游戏总控制器。 */
+    /*
+    Scene
+    ├── View（cocos对象，Ref管理）
+    └── Controller（C++对象，unique_ptr管理）
+    */
+   /** 
+    * @brief 游戏总控制器。
+    * @note 唯一拥有者（unique_ptr），生命周期由 GameScene 管理
+    */
     std::unique_ptr<GameController> _gameController;
 };
 
