@@ -18,7 +18,7 @@ enum UndoActionType {
 
 /**
  * @brief 单步回退记录模型。
- * @see UndoManager.h
+ * @see ../managers/UndoManager.h
  * 
  * 用于描述一次卡牌移动在回退时所需恢复的数据。
  */

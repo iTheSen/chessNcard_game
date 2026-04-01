@@ -11,10 +11,10 @@ namespace qipai {
  */
 struct LevelCardConfig {
     /** @brief 点数配置值，对应 CardFaceType 的整数值。 */
-    int cardFace = -1;
+    int cardFace = -1;//NONE
 
     /** @brief 花色配置值，对应 CardSuitType 的整数值。 */
-    int cardSuit = -1;
+    int cardSuit = -1;//NONE
 
     /** @brief 配置中的卡牌坐标。 */
     cocos2d::Vec2 position = cocos2d::Vec2::ZERO;

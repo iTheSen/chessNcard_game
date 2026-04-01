@@ -9,7 +9,7 @@ namespace qipai {
 
 /**
  * @brief 运行时卡牌数据模型。
- * @note 可见这是一张卡牌的信息
+ * @note 一个实例对应一张卡牌的信息
  */
 class CardModel {
 public:

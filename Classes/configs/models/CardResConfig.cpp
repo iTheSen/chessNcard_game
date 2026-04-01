@@ -2,11 +2,15 @@
 
 namespace qipai {
 
+    //只在当前 .cpp 文件内部可见
 namespace {
 
     //背景图片
 const std::string kCardBackgroundPath = "res/cards/card_general.png";
-
+/*
+equals to：
+static const std::string kCardBackgroundPath = "...";
+*/
 } // namespace
 
 const std::string& CardResConfig::getCardBackgroundPath()
